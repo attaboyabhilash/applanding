@@ -1,51 +1,77 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Select } from "antd"
+import products from "../helpers/products"
+import { ReviewContext } from "../contexts/reviewContext"
 
 function Header() {
-  const { Option } = Select
+    const { Option } = Select
 
-  function handleChange(value) {
-    console.log(`selected ${value}`)
-  }
+    const { selectReview, sortReviewNew, sortReviewOld } = useContext(
+        ReviewContext
+    )
 
-  return (
-    <div className="header">
-      <div className="select-product">
-        <label htmlFor="dropdown">Select Product</label>
-        <Select
-          defaultValue="my app"
-          style={{ width: "100%" }}
-          onChange={handleChange}
-        >
-          <Option value="my app">My App</Option>
-          <Option value="your app">Your App</Option>
-          <Option value="this app">This App</Option>
-          <Option value="not your app">Not Your App</Option>
-        </Select>
-      </div>
-      <div className="sorting-translate">
-        <div className="sorting">
-          <label>Sorting</label>
-          <Select
-            size="small"
-            defaultValue="newest"
-            style={{ width: "100%" }}
-            onChange={handleChange}
-          >
-            <Option value="newest">Newest First</Option>
-            <Option value="oldest">Oldest First</Option>
-          </Select>
+    const handleSelectChange = (value) => {
+        selectReview(value)
+    }
+
+    const handleSortChange = (value) => {
+        if (value === "newest") {
+            sortReviewNew()
+        } else {
+            sortReviewOld()
+        }
+    }
+
+    return (
+        <div className="header">
+            <div className="select-product">
+                <label htmlFor="dropdown">Select Product</label>
+                <Select
+                    defaultValue="com.google"
+                    style={{ width: "100%" }}
+                    onChange={handleSelectChange}
+                >
+                    <Option value="com.google">
+                        {products("com.google")}google
+                    </Option>
+                    <Option value="com.flipkart">
+                        {products("com.flipkart")}flipkart
+                    </Option>
+                    <Option value="com.amazon">
+                        {products("com.amazon")}amazon
+                    </Option>
+                    <Option value="com.myntra">
+                        {products("com.myntra")}myntra
+                    </Option>
+                </Select>
+            </div>
+            <div className="sorting-translate">
+                <div className="sorting">
+                    <label>Sorting</label>
+                    <Select
+                        size="small"
+                        defaultValue="newest"
+                        style={{ width: "100%" }}
+                        onChange={handleSortChange}
+                    >
+                        <Option value="newest">Newest First</Option>
+                        <Option value="oldest">Oldest First</Option>
+                    </Select>
+                </div>
+                <div className="translate">
+                    <label>Translation</label>
+                    <Select
+                        size="small"
+                        defaultValue="english"
+                        style={{ width: "100%" }}
+                    >
+                        <Option value="english">English</Option>
+                        <Option value="hindi">Hindi</Option>
+                    </Select>
+                </div>
+            </div>
         </div>
-        <div className="translate">
-          <label>Translation</label>
-          <Select size="small" defaultValue="english" style={{ width: "100%" }}>
-            <Option value="english">English</Option>
-            <Option value="hindi">Hindi</Option>
-          </Select>
-        </div>
-      </div>
-    </div>
-  )
+    )
 }
 
 export default Header

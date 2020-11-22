@@ -1,239 +1,310 @@
 @import "~antd/dist/antd.css";
 
-
 /* Universals */
 *,
 ::before,
 ::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  height: 500vh;
-  background-color: #fff;
-  color: #000;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    background-color: #fff;
+    color: #000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .stars .star-icon-filled {
-  color: #ffc400;
+    color: #ffc400;
 }
 
 .stars .star-icon {
-  color: #ddd;
+    color: #ddd;
 }
 
 .stars svg {
-  margin: 0px 2px 0px 0px;
+    margin: 0px 2px 0px 0px;
 }
 
-.google, .amazon, .flipkart, .myntra{
-  width: 20px;
+.google,
+.amazon {
+    width: 20px;
+}
+
+.flipkart,
+.myntra {
+    width: 25px;
+}
+
+.flipkart {
+    margin-top: -5px;
 }
 
 /* Header */
 
 .header {
-  position: fixed;
-  width: calc(100vw - 300px);
-  right: 0;
-  padding: 15px 5% 35px;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  background: #fff;
-  z-index: 9;
-  grid-column-gap: 250px;
-  box-shadow: 0px 3px 6px #0000001f;
+    position: fixed;
+    width: calc(100vw - 300px);
+    right: 0;
+    padding: 15px 5% 35px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    background: #fff;
+    z-index: 9;
+    grid-column-gap: 250px;
+    box-shadow: 0px 3px 6px #0000001f;
 }
 
 .select-product select {
-  width: 100%;
+    width: 100%;
+}
+
+.select-product img,
+.ant-select-item-option-content img {
+    width: 15px;
+    margin-right: 10px;
+    margin-top: -2px;
 }
 
 .header .sorting-translate {
-  margin-top: 3.5px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 20px;
+    margin-top: 3.5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
 }
 
 .sorting input,
 .translate input {
-  width: 100%;
+    width: 100%;
 }
 
 /* Left Dashboard */
 
 .left-dash {
-  position: fixed;
-  width: 300px;
-  top: 0;
-  z-index: 10;
-  padding: 20px;
-  min-height: 100vh;
-  background-color: #fff;
-  transition: all 450ms ease-in-out;
+    position: fixed;
+    width: 300px;
+    top: 0;
+    z-index: 10;
+    padding: 20px;
+    min-height: 100vh;
+    background-color: #fff;
+    transition: all 450ms ease-in-out;
 }
 
 .left-dash::after {
-  content: "";
-  position: absolute;
-  width: 1px;
-  height: 100vh;
-  top: 0;
-  right: 0;
-  background-color: #eee;
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    background-color: #eee;
 }
 
 .menu-bar {
-  position: absolute;
-  font-size: 3em;
-  right: -41px;
-  top: 0px;
-  padding: 2px 2px 2px 7px;
-  color: #000;
-  display: none;
+    position: absolute;
+    font-size: 3em;
+    right: -41px;
+    top: 0px;
+    padding: 2px 2px 2px 7px;
+    color: #000;
+    display: none;
 }
 
 .search {
-  position: relative;
-  font-size: 1.4em;
-  left: -5px;
-  cursor: pointer;
+    position: relative;
+    font-size: 1.4em;
+    left: -5px;
+    cursor: pointer;
 }
 
 .calender {
-  margin-top: 15px;
+    margin-top: 15px;
 }
 
 .text-holder {
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1em;
-  margin-top: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1em;
+    margin-top: 15px;
 }
 
 .text-holder .text-holder-icon {
-  position: absolute;
-  margin-top: 5px;
-  margin-left: 5px;
-  transform: rotate(180deg);
-  transition: all 350ms ease-in-out;
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 5px;
+    transform: rotate(180deg);
+    transition: all 350ms ease-in-out;
 }
 
 .drop-down-list ul {
-  list-style-type: none;
-  padding: 0px;
-  margin-top: 5px;
+    list-style-type: none;
+    padding: 0px;
+    margin-top: 5px;
 }
 
 .drop-down-list ul li {
-  padding: 5px 10px;
-  background-color: #fff;
+    padding: 5px 10px;
+    background-color: #fff;
 }
 
 /* Right Dashboard */
 .right-dash {
-  width: calc(100vw - 315px);
-  position: absolute;
-  top: 130px;
-  right: 0;
-  padding: 25px 25px;
+    width: calc(100vw - 315px);
+    position: absolute;
+    top: 105px;
+    right: 0;
+    padding: 25px 25px;
+}
+
+.right-top .page-value p {
+    font-weight: 500;
+}
+
+.right-top .right-top-icons {
+    float: right;
+    display: flex;
+    margin-top: -40px;
+    justify-content: space-between;
+    width: 200px;
+}
+
+.right-top-icons .alert,
+.right-top-icons .download {
+    padding: 3px 7px 2px 7px;
+    border: 0.1px solid #ddd;
+    border-radius: 4px;
+}
+
+.alert svg {
+    cursor: pointer;
+}
+
+.alert small {
+    margin: 0px 5px;
+    position: relative;
+    top: -2px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.download svg {
+    margin-right: 7px;
+    cursor: pointer;
+}
+
+.download svg:last-child {
+    margin-right: 0px;
+}
+
+.pagination {
+    text-align: center;
 }
 
 /* Card */
 .ant-card-body {
-  padding: 15px 25px;
+    padding: 15px 25px;
 }
 
 .card-title div {
-  display: inline-block;
-  margin-right: 25px;
+    display: inline-block;
+    margin-right: 25px;
 }
 
 .card-title .appStoreName {
-  background-color: #eee;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-weight: 500;
+    background-color: #eee;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: 500;
 }
 
 .card-title .reviewHeading h2 {
-  margin: 0px;
+    margin: 0px;
 }
 
 .card-description {
-  margin: 15px 0px 15px 0px;
+    margin: 15px 0px 15px 0px;
 }
 
 .card-description p {
-  font-size: 1.1em;
-  color: #333;
+    font-size: 1.1em;
+    color: #333;
 }
 
 .card-footer small {
-  margin-right: 20px;
-  font-weight: 500;
-  font-size: 0.9em;
+    margin-right: 20px;
+    font-weight: 500;
+    font-size: 0.9em;
 }
 
 .card-footer .c-flag {
-  width: 20px;
-  border-radius: 2px;
-  margin-right: 5px;
-  margin-top: -2px;
+    width: 20px;
+    border-radius: 2px;
+    margin-right: 5px;
+    margin-top: -2px;
 }
 
 @media only screen and (max-width: 1100px) {
-  .header {
-    grid-column-gap: 70px;
-  }
+    .header {
+        grid-column-gap: 70px;
+    }
 }
 
 @media only screen and (max-width: 800px) {
-  .header {
-    width: 100%;
-    display: block;
-  }
+    .header {
+        width: 100%;
+        display: block;
+    }
 
-  .select-product {
-    padding-top: 50px;
-  }
+    .select-product {
+        padding-top: 50px;
+    }
 
-  .sorting-translate {
-    position: absolute;
-    top: 10px;
-    width: 50%;
-    right: 5%;
-  }
+    .sorting-translate {
+        position: absolute;
+        top: 10px;
+        width: 50%;
+        right: 5%;
+    }
 
-  .menu-bar {
-    display: block;
-  }
+    .menu-bar {
+        display: block;
+    }
 
-  .left-dash {
-    width: 250px;
-    transform: translateX(-250px);
-  }
+    .left-dash {
+        width: 250px;
+        transform: translateX(-250px);
+    }
 
-  .left-dash::after {
-    display: none;
-  }
+    .left-dash::after {
+        display: none;
+    }
 
-  .right-dash {
-    width: 100%;
-    position: absolute;
-    top: 180px;
-  }
+    .right-dash {
+        width: 100%;
+        position: absolute;
+        top: 190px;
+    }
 }
 
 @media only screen and (max-width: 500px) {
-  .sorting-translate {
-    width: 70%;
-  }
+    .sorting-translate {
+        width: 70%;
+    }
+
+    .card-title div {
+        margin-right: 15px;
+    }
+
+    .card-title .appID {
+        margin-bottom: 15px;
+    }
+
+    .right-top .right-top-icons {
+        margin-top: -75px;
+    }
 }
