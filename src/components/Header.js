@@ -27,10 +27,13 @@ function Header() {
             <div className="select-product">
                 <label htmlFor="dropdown">Select Product</label>
                 <Select
-                    defaultValue="com.google"
+                    defaultValue="allProducts"
                     style={{ width: "100%" }}
                     onChange={handleSelectChange}
                 >
+                    <Option value="allProducts">
+                        {products("allProducts")}All Products
+                    </Option>
                     <Option value="com.google">
                         {products("com.google")}google
                     </Option>

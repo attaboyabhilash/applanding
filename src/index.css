@@ -44,6 +44,14 @@ body {
     margin-top: -5px;
 }
 
+.box-open {
+    display: inline-block;
+    font-size: 1.4em;
+    margin-right: 5px;
+    position: relative;
+    top: 4.5px;
+}
+
 /* Header */
 
 .header {
@@ -90,7 +98,7 @@ body {
     top: 0;
     z-index: 10;
     padding: 20px;
-    min-height: 100vh;
+    min-height: 900px;
     background-color: #fff;
     transition: all 450ms ease-in-out;
 }
@@ -143,13 +151,46 @@ body {
 
 .drop-down-list ul {
     list-style-type: none;
-    padding: 0px;
+    padding: 5px 0px;
     margin-top: 5px;
 }
 
 .drop-down-list ul li {
-    padding: 5px 10px;
+    padding: 2px 5px;
     background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.drop-down-list ul li:hover {
+    background-color: #aaa;
+    cursor: pointer;
+}
+
+.drop-down-list ul li .c-flag {
+    width: 20px;
+    border-radius: 2px;
+    margin-right: 5px;
+    margin-top: -2px;
+}
+
+.star-bar {
+    display: flex;
+    width: 250px;
+    padding-top: 2px;
+}
+
+.star-bar span {
+    height: 15px;
+    background-color: #ddd;
+    margin-left: 5px;
+    border-radius: 4px;
+    margin-top: 2px;
+}
+
+.drop-down-list ul li p {
+    margin: 0px;
+    color: #aaa;
 }
 
 /* Right Dashboard */
@@ -288,6 +329,10 @@ body {
         width: 100%;
         position: absolute;
         top: 190px;
+    }
+
+    .star-bar span {
+        display: none;
     }
 }
 

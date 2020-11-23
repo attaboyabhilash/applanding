@@ -1,10 +1,11 @@
-import Google from '../assets/google.png'
-import Amazon from '../assets/amazon.svg'
-import Flipkart from '../assets/flipkart.png'
-import Myntra from '../assets/myntra.png'
+import Google from "../assets/google.png"
+import Amazon from "../assets/amazon.svg"
+import Flipkart from "../assets/flipkart.png"
+import Myntra from "../assets/myntra.png"
+import { FaBoxOpen } from "react-icons/fa"
 
 const products = (prod) => {
-    switch(prod){
+    switch (prod) {
         case "com.google":
             return <img src={Google} alt="google" className="google" />
         case "com.amazon":
@@ -14,7 +15,11 @@ const products = (prod) => {
         case "com.myntra":
             return <img src={Myntra} alt="myntra" className="myntra" />
         default:
-            return 0
+            return (
+                <div className="box-open">
+                    <FaBoxOpen />
+                </div>
+            )
     }
 }
 

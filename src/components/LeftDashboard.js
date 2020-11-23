@@ -1,4 +1,8 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
+import { ReviewContext } from "../contexts/reviewContext"
+import useRating from "../hooks/useRating"
+import useVersion from "../hooks/useVersion"
+import useCountry from "../hooks/useCountry"
 // Ant Design
 import { Input } from "antd"
 import { DatePicker, Space } from "antd"
@@ -10,6 +14,7 @@ import { ImMenu2 } from "react-icons/im"
 
 // helpers
 import stars from "../helpers/stars"
+import flags from "../helpers/flags"
 
 function LeftDashboard() {
     const { RangePicker } = DatePicker
@@ -17,6 +22,14 @@ function LeftDashboard() {
     const [rating, setRating] = useState(true)
     const [version, setVersion] = useState(true)
     const [country, setCountry] = useState(true)
+
+    const { ratings, versions, countries } = useContext(ReviewContext)
+
+    const { one, two, three, four, five } = useRating(ratings)
+
+    const { us, uk, ind, jp, de, au, fr, ru } = useCountry(countries)
+
+    const { v01, v10, v101, v12, v121, v13 } = useVersion(versions)
 
     useEffect(() => {
         function handleResize() {
@@ -64,11 +77,61 @@ function LeftDashboard() {
                 style={rating ? { display: "block" } : { display: "none" }}
             >
                 <ul>
-                    <li>{stars(5)}</li>
-                    <li>{stars(4)}</li>
-                    <li>{stars(3)}</li>
-                    <li>{stars(2)}</li>
-                    <li>{stars(1)}</li>
+                    <li>
+                        <div className="star-bar">
+                            {stars(5)}
+                            <span
+                                style={{
+                                    width: `${five / 10}%`,
+                                }}
+                            ></span>
+                        </div>
+                        <p>{five}</p>
+                    </li>
+                    <li>
+                        <div className="star-bar">
+                            {stars(4)}
+                            <span
+                                style={{
+                                    width: `${four / 10}%`,
+                                }}
+                            ></span>
+                        </div>
+                        <p>{four}</p>
+                    </li>
+                    <li>
+                        <div className="star-bar">
+                            {stars(3)}
+                            <span
+                                style={{
+                                    width: `${three / 10}%`,
+                                }}
+                            ></span>
+                        </div>
+                        <p>{three}</p>
+                    </li>
+                    <li>
+                        <div className="star-bar">
+                            {stars(2)}
+                            <span
+                                style={{
+                                    width: `${two / 10}%`,
+                                }}
+                            ></span>
+                        </div>
+                        <p>{two}</p>
+                    </li>
+                    <li>
+                        <div className="star-bar">
+                            {stars(1)}
+                            <span
+                                style={{
+                                    width: `${one / 10}%`,
+                                }}
+                            ></span>
+                        </div>
+                        <p>{one}</p>
+                    </li>
                 </ul>
             </div>
             <div
@@ -86,11 +149,24 @@ function LeftDashboard() {
                 style={version ? { display: "block" } : { display: "none" }}
             >
                 <ul>
-                    <li>1.2.0</li>
-                    <li>1.1.4</li>
-                    <li>1.1.2</li>
-                    <li>1.1.0</li>
-                    <li>1.0</li>
+                    <li>
+                        v1.3<p>{v13}</p>
+                    </li>
+                    <li>
+                        v1.2.1<p>{v121}</p>
+                    </li>
+                    <li>
+                        v1.2<p>{v12}</p>
+                    </li>
+                    <li>
+                        v1.0.1<p>{v101}</p>
+                    </li>
+                    <li>
+                        v1.0<p>{v10}</p>
+                    </li>
+                    <li>
+                        v0.1<p>{v01}</p>
+                    </li>
                 </ul>
             </div>
             <div
@@ -108,11 +184,38 @@ function LeftDashboard() {
                 style={country ? { display: "block" } : { display: "none" }}
             >
                 <ul>
-                    <li>United States</li>
-                    <li>United Kingdom</li>
-                    <li>Germany</li>
-                    <li>Japan</li>
-                    <li>India</li>
+                    <li>
+                        <div>{flags("United States")}United States</div>
+                        <p>{us}</p>
+                    </li>
+                    <li>
+                        <div>{flags("United Kingdom")}United Kingdom</div>
+                        <p>{uk}</p>
+                    </li>
+                    <li>
+                        <div>{flags("India")}India</div>
+                        <p>{ind}</p>
+                    </li>
+                    <li>
+                        <div>{flags("Germany")}Germany</div>
+                        <p>{de}</p>
+                    </li>
+                    <li>
+                        <div>{flags("Japan")}Japan</div>
+                        <p>{jp}</p>
+                    </li>
+                    <li>
+                        <div>{flags("France")}France</div>
+                        <p>{fr}</p>
+                    </li>
+                    <li>
+                        <div>{flags("Australia")}Australia</div>
+                        <p>{au}</p>
+                    </li>
+                    <li>
+                        <div>{flags("Russia")}Russia</div>
+                        <p>{ru}</p>
+                    </li>
                 </ul>
             </div>
         </div>
