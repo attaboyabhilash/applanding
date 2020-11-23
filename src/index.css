@@ -160,10 +160,6 @@ body {
     background-color: #fff;
     display: flex;
     justify-content: space-between;
-}
-
-.drop-down-list ul li:hover {
-    background-color: #aaa;
     cursor: pointer;
 }
 
@@ -276,6 +272,11 @@ body {
     color: #333;
 }
 
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
 .card-footer small {
     margin-right: 20px;
     font-weight: 500;
@@ -287,6 +288,11 @@ body {
     border-radius: 2px;
     margin-right: 5px;
     margin-top: -2px;
+}
+
+.card-footer .right .arrow-down {
+    position: relative;
+    top: 2.5px;
 }
 
 @media only screen and (max-width: 1100px) {

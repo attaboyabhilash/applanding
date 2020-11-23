@@ -26,7 +26,8 @@ function RightDashboard() {
             <div className="right-top">
                 <div className="page-value">
                     <p>
-                        Viewing {pageLimit - 9}-{pageLimit} of{" "}
+                        Viewing {pageLimit - 9}-
+                        {Math.min(pageLimit, localReviews.length)} of{" "}
                         {localReviews.length} Reviews
                     </p>
                 </div>

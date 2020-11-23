@@ -1,9 +1,12 @@
 import React, { useState, useEffect, createContext } from "react"
 import reviews from "../review.json"
+import dayjs from "dayjs"
+import isBetween from "dayjs/plugin/isBetween"
 
 export const ReviewContext = createContext()
 
 const ReviewContextProvider = (props) => {
+    dayjs.extend(isBetween)
     const [allReviews, setAllReviews] = useState([])
     const [ratings, setRatings] = useState([])
     const [versions, setVersions] = useState([])
@@ -43,6 +46,36 @@ const ReviewContextProvider = (props) => {
         setAllReviews(sortedReviews)
     }
 
+    const handleRatings = (starnum) => {
+        const newStarNum = allReviews.filter(
+            (review) => review.rating === starnum
+        )
+        setAllReviews(newStarNum)
+    }
+
+    const handleVersions = (vernum) => {
+        const newVerNum = allReviews.filter(
+            (review) => review.version === vernum
+        )
+        setAllReviews(newVerNum)
+    }
+
+    const handleCountries = (couname) => {
+        const newCouName = allReviews.filter(
+            (review) => review.countryName === couname
+        )
+        setAllReviews(newCouName)
+    }
+
+    const datePicker = (date1, date2) => {
+        if (date1 !== null && date2 !== null) {
+            const newReviews = allReviews.filter((review) =>
+                dayjs(review.reviewDate).isBetween(date1, date2, null, "[]")
+            )
+            setAllReviews(newReviews)
+        }
+    }
+
     useEffect(() => {
         const stars = allReviews.map((review) => review.rating)
         setRatings(stars)
@@ -78,6 +111,10 @@ const ReviewContextProvider = (props) => {
                 selectReview,
                 sortReviewNew,
                 sortReviewOld,
+                handleRatings,
+                handleVersions,
+                handleCountries,
+                datePicker,
             }}
         >
             {props.children}
