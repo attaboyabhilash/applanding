@@ -31,6 +31,7 @@ function LeftDashboard() {
         handleVersions,
         handleCountries,
         datePicker,
+        setSearchTerm,
     } = useContext(ReviewContext)
 
     const { one, two, three, four, five } = useRating(ratings)
@@ -66,7 +67,10 @@ function LeftDashboard() {
         const date1 = value && value[0]._d
         const date2 = value && value[1]._d
         datePicker(date1, date2)
-        console.log(date1, date2)
+    }
+
+    const handleChange = (e) => {
+        setSearchTerm(e.target.value)
     }
 
     return (
@@ -85,6 +89,7 @@ function LeftDashboard() {
             <Input
                 placeholder="Search..."
                 prefix={<AiOutlineSearch className="search" />}
+                onChange={handleChange}
             />
             <Space direction="vertical" size={12} className="calender">
                 <RangePicker onChange={handleDateSearch} />

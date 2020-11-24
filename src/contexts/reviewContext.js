@@ -2,6 +2,7 @@ import React, { useState, useEffect, createContext } from "react"
 import reviews from "../review.json"
 import dayjs from "dayjs"
 import isBetween from "dayjs/plugin/isBetween"
+import Fuse from "fuse.js"
 
 export const ReviewContext = createContext()
 
@@ -11,6 +12,7 @@ const ReviewContextProvider = (props) => {
     const [ratings, setRatings] = useState([])
     const [versions, setVersions] = useState([])
     const [countries, setCountries] = useState([])
+    const [searchTerm, setSearchTerm] = useState("")
 
     const selectReview = (reviewID) => {
         let selectedReview = []
@@ -69,7 +71,7 @@ const ReviewContextProvider = (props) => {
 
     const datePicker = (date1, date2) => {
         if (date1 !== null && date2 !== null) {
-            const newReviews = allReviews.filter((review) =>
+            const newReviews = reviews.filter((review) =>
                 dayjs(review.reviewDate).isBetween(date1, date2, null, "[]")
             )
             setAllReviews(newReviews)
@@ -91,6 +93,29 @@ const ReviewContextProvider = (props) => {
         setCountries(country)
     }, [allReviews])
 
+    useEffect(
+        () => {
+            const fuse = new Fuse(reviews, {
+                keys: [
+                    "appID",
+                    "appStoreName",
+                    "rating",
+                    "version",
+                    "countryName",
+                    "reviewHeading",
+                    "reviewText",
+                    "reviewUserName",
+                ],
+            })
+            const query = fuse.search(searchTerm)
+            const searchResults = searchTerm
+                ? query.map((review) => review.item)
+                : reviews
+            setAllReviews(searchResults)
+        }, // eslint-disable-next-line
+        [searchTerm]
+    )
+
     useEffect(() => {
         reviews
             .sort((a, b) => {
@@ -108,6 +133,7 @@ const ReviewContextProvider = (props) => {
                 ratings,
                 versions,
                 countries,
+                setSearchTerm,
                 selectReview,
                 sortReviewNew,
                 sortReviewOld,
