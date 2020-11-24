@@ -75,6 +75,13 @@ const ReviewContextProvider = (props) => {
                 dayjs(review.reviewDate).isBetween(date1, date2, null, "[]")
             )
             setAllReviews(newReviews)
+        } else {
+            const firstBatchReviews = reviews
+                .sort((a, b) => {
+                    return Date.parse(b.reviewDate) - Date.parse(a.reviewDate)
+                })
+                .map((review) => review)
+            setAllReviews(firstBatchReviews)
         }
     }
 
