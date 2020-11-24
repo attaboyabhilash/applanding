@@ -132,13 +132,14 @@ body {
 
 .calender {
     margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .text-holder {
     cursor: pointer;
     font-weight: 600;
     font-size: 1em;
-    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 .text-holder .text-holder-icon {
@@ -151,12 +152,12 @@ body {
 
 .drop-down-list ul {
     list-style-type: none;
-    padding: 5px 0px;
+    padding: 0px;
     margin-top: 5px;
 }
 
 .drop-down-list ul li {
-    padding: 2px 5px;
+    padding: 2px 0px;
     background-color: #fff;
     display: flex;
     justify-content: space-between;
@@ -196,6 +197,7 @@ body {
     top: 105px;
     right: 0;
     padding: 25px 25px;
+    background-color: #fff;
 }
 
 .right-top .page-value p {
@@ -215,6 +217,8 @@ body {
     padding: 3px 7px 2px 7px;
     border: 0.1px solid #ddd;
     border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
 }
 
 .alert svg {
@@ -226,12 +230,10 @@ body {
     position: relative;
     top: -2px;
     font-weight: 500;
-    cursor: pointer;
 }
 
 .download svg {
     margin-right: 7px;
-    cursor: pointer;
 }
 
 .download svg:last-child {

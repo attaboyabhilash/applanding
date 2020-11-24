@@ -2,15 +2,13 @@ import React from "react"
 import { Header, LeftDashboard, RightDashboard } from "../components"
 
 const Home = () => {
-  return (
-    <div>
-      <Header />
-      <div className="dashboards">
-        <LeftDashboard />
-        <RightDashboard />
-      </div>
-    </div>
-  )
+    return (
+        <>
+            <Header />
+            <LeftDashboard />
+            <RightDashboard />
+        </>
+    )
 }
 
 export default Home

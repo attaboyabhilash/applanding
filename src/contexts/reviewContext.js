@@ -81,14 +81,8 @@ const ReviewContextProvider = (props) => {
     useEffect(() => {
         const stars = allReviews.map((review) => review.rating)
         setRatings(stars)
-    }, [allReviews])
-
-    useEffect(() => {
         const versions = allReviews.map((review) => review.version)
         setVersions(versions)
-    }, [allReviews])
-
-    useEffect(() => {
         const country = allReviews.map((review) => review.countryName)
         setCountries(country)
     }, [allReviews])
@@ -117,13 +111,12 @@ const ReviewContextProvider = (props) => {
     )
 
     useEffect(() => {
-        reviews
+        const firstBatchReviews = reviews
             .sort((a, b) => {
                 return Date.parse(b.reviewDate) - Date.parse(a.reviewDate)
             })
-            .map((review) => {
-                return setAllReviews((prevReview) => [...prevReview, review])
-            })
+            .map((review) => review)
+        setAllReviews(firstBatchReviews)
     }, [])
 
     return (
